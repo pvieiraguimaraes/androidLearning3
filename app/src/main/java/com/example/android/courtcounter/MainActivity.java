@@ -62,15 +62,13 @@ public class MainActivity extends AppCompatActivity {
     public void displayForTeam(int score, View view) {
         String panel = ((View) view.getParent()).getTag().toString();
 
-        if (panel == "team_a_score_panel") {
+        if (panel.equals("team_a_score_panel")) {
             setScoreTeamA(score + getScoreTeamA());
             getScoreViewA().setText(String.valueOf(getScoreTeamA()));
-        }
-        if (panel == "team_b_score_panel") {
+        } else {
             setScoreTeamB(score + getScoreTeamB());
             getScoreViewB().setText(String.valueOf(getScoreTeamB()));
         }
-
     }
 
     public void pointMarkThree(View view) {
@@ -83,5 +81,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void pointMarkOne(View view) {
         displayForTeam(1, view);
+    }
+
+    public void resetScores(View view) {
+        getScoreViewA().setText("0");
+        setScoreTeamA(0);
+
+        getScoreViewB().setText("0");
+        setScoreTeamB(0);
     }
 }
